@@ -106,6 +106,8 @@ int main() {
             car_s = end_path_s;
           }
           
+          // Prediction
+          
           // Preferred Lane Calculation Starts------------------------
           
           // Calculate average speed of lanes
@@ -178,12 +180,12 @@ int main() {
           
           vector<double> lane_speeds_ = {average_left_speed, average_middle_speed, average_right_speed};
           
+          // Cost design
           vector<double> costs;
           int min_cost = 9999999;
           double max_speed = 50;
           for (int j = 0; j < 3; j++)
           {
-            //double cost_ = inefficiency_cost(max_speed, j, lane_speeds_);
             double cost_ = 1 -  (lane_speeds_[j]/max_speed);
             if (collision)
             {
@@ -278,6 +280,7 @@ int main() {
             } 
           }
           
+          // Behaviour
           if(car_same_lane)
           {
             if ((!car_left_lane) && (lane > 0))
@@ -321,6 +324,8 @@ int main() {
            * TODO: define a path made up of (x,y) points that the car will visit
            *   sequentially every .02 seconds
            */
+          
+          // Trajectory planning
           
           // Create a list of widely spaced (x,y) waypoints, evenly spaced at 30m
           // Later interpolate these waypoints with a spline and fill it with more points that control speed 
