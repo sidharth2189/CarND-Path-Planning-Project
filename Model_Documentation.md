@@ -39,13 +39,14 @@ No changes were made in the cmake configuration. A new file was added [src/splin
 ## Valid trajectories
 
 ### The car is able to drive at least 4.32 miles without incident.
-A video of the simulation can be found [here](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/Path_Planning.mp4)
-In the video, the vehicle has run for well above 7 miles without any incident.
+A video of the simulation can be found [here](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/Path_Planning.mp4). In the video, the vehicle has run for well above 7 miles without any incident.
 
 Below are snapshots from a run on the simulator.
 
+The vehicle has run without any incident for 10 miles.
 ![10 miles](images/10_miles.jpg)
 
+The vehicle has run without any incident for 15 miles.
 ![15 miles](images/15_miles.jpg)
 
 ### The car drives according to the speed limit.
