@@ -5,7 +5,7 @@ Udacity Self-Driving Car Nanodegree - Path Planning Project
 
 # Overview
 
-In this project, the goal is to design a path planner that is able to create smooth, safe paths for a self driving car to follow along a 3 lane highway with traffic. A successful path planner will be able to keep inside its lane, avoid hitting other cars, and pass slower moving traffic all by using localization, sensor fusion, and map data. For this purpose, a simulator provided by Udacity([the simulator could be downloaded here](https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2)) is used to visualize the implementation of the path planning. The simulator sends car telemetry information (car's position and velocity) and sensor fusion information about the rest of the cars in the highway (Ex. car id, velocity, position). It expects a set of points spaced in time at 0.02 seconds representing the car's trajectory. The communication between the simulator and the path planner is done using [WebSocket](https://en.wikipedia.org/wiki/WebSocket). The path planner uses the [uWebSockets](https://github.com/uNetworking/uWebSockets) WebSocket implementation to handle this communication. The reference repository from Udacity can be found([here](https://github.com/udacity/CarND-Path-Planning-Project)). The project rubric can be found([here](https://review.udacity.com/#!/rubrics/1971/view))
+In this project, the goal is to design a path planner that is able to create smooth, safe paths for a self driving car to follow along a 3 lane highway with traffic. A successful path planner will be able to keep inside its lane, avoid hitting other cars, and pass slower moving traffic all by using localization, sensor fusion, and map data. For this purpose, a simulator provided by Udacity([the simulator could be downloaded here](https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2)) is used to visualize the implementation of the path planning. The simulator sends car telemetry information (car's position and velocity) and sensor fusion information about the rest of the cars in the highway (Ex. car id, velocity, position). It expects a set of points spaced in time at 0.02 seconds representing the car's trajectory. The communication between the simulator and the path planner is done using [WebSocket](https://en.wikipedia.org/wiki/WebSocket). The path planner uses the [uWebSockets](https://github.com/uNetworking/uWebSockets) WebSocket implementation to handle this communication. The reference repository from Udacity can be found [here](https://github.com/udacity/CarND-Path-Planning-Project). The project rubric can be found [here](https://review.udacity.com/#!/rubrics/1971/view)
 
 # Prerequisites
 
@@ -65,7 +65,7 @@ The car doesn't spend more than a 3 second length out side the lane lanes during
 
 ## Reflection
 
-Based on the provided code from the seed project, the path planning algorithms start at [src/main.cpp](./src/main.cpp#L246) line 246 to the line 416. The code could be separated into different functions to show the overall process, but I prefer to have everything in a single place to avoid jumping to different parts of the file or other files. In a more complicated environment and different requirements, more structure could be used. For now, comments are provided to improve the code readability.
+Based on the provided code from the reference repository and classroom lessons, the path planning algorithms start at [src/main.cpp](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/src/main.cpp). The code could be separated into different functions to show the overall process, but I prefer to have everything in a single place to avoid jumping to different parts of the file or other files. In a more complicated environment and different requirements, more structure could be used. For now, comments are provided to improve the code readability.
 
 The code consist of following important parts:
 
@@ -81,7 +81,7 @@ The first three questions are answered by calculating the lane that each of the 
 
 The last question is answered by categorizing all the cars into lanes they are in and then averaging the sum of their velocities, lanewise. This gives us the average speed of each of the lane. This further helps us in building a cost function.
 
-### Cost Design [line 283 to line 316](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/src/main.cpp)
+### Cost Design [line 183 to line 206](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/src/main.cpp)
 
 The cost function designed here is mostly to account for efficiency and safety. It can be a good idea to be in the lanes with the highest avergae traffic speed. If we are not on this lane already and if it is safe to shift to this lane, we do so incrementally and this way the ego vehicle can evade any future bottleneck. 
 ```
@@ -111,7 +111,7 @@ The cost function designed here is mostly to account for efficiency and safety. 
           }
 
 ```
-### Behavior [line 183 to line 206](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/src/main.cpp)
+### Behavior [line 283 to line 316](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/src/main.cpp)
 This part decides what to do:
   - If we have a car in front of us, do we change lanes?
   - Do we speed up or slow down?
@@ -165,6 +165,6 @@ else
 ### Trajectory [line 328 to line 444](https://github.com/sidharth2189/CarND-Path-Planning-Project/blob/master/src/main.cpp)
 This code does the calculation of the trajectory based on the speed and lane output from the behavior, car coordinates and past path points.
 
-First, the last two points of the previous trajectory (or the car position if there are no previous trajectory, lines 341 to 370) are used in conjunction three points at a far distance (lines 373 to 395) to initialize a spline calculation (line 398). To make the work less complicated to the spline calculation based on those points, the coordinates are transformed (shift and rotation) to local car coordinates. The spline helps smoothen the path avoiding jerk and acceleration limits.
+First, the last two points of the previous trajectory (or the car position if there are no previous trajectory, lines 341 to 370) are used in conjunction three points at a far distance (lines 372 to 395) to initialize a spline calculation (line 398). To make the work less complicated to the spline calculation based on those points, the coordinates are transformed (shift and rotation) to local car coordinates. The spline helps smoothen the path avoiding jerk and acceleration limits.
 
 In order to ensure continuity on the trajectory, the code builds a 50 point path and starts the new path with whatever previous path points were left over from the last cycle (line 421 to 444). Then new waypoints are appended, until the new path has 50 total waypoints. Using information from the previous path ensures that there is a smooth transition from cycle to cycle. But the more waypoints we use from the previous path, the less the new path will reflect dynamic changes in the environment.
