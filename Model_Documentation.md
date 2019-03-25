@@ -32,9 +32,9 @@ As the code runs, the vehicle moves on the highway.
 
 ## Compilation
 
-### The code compiles correctly.
+### The code compiles successfully.
 
-No changes were made in the cmake configuration. A new file was added [src/spline.h](./scr/spline.h). It is the [Cubic Spline interpolation implementation](http://kluge.in-chemnitz.de/opensource/spline/): a single .h file that is an alternative to the quintic polynomial lesson in the classroom.
+No changes were made in the cmake configuration. A new file was added [src/spline.h](./src/spline.h). It is the [Cubic Spline interpolation implementation](http://kluge.in-chemnitz.de/opensource/spline/): a single .h file that is an alternative to the quintic polynomial lesson in the classroom.
 
 ## Valid trajectories
 
