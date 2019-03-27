@@ -5,7 +5,7 @@ Udacity Self-Driving Car Nanodegree - Path Planning Project
 
 # Overview
 
-In this project, the goal is to design a path planner that is able to create smooth, safe paths for a self driving car to follow along a 3 lane highway with traffic. A successful path planner will be able to keep inside its lane, avoid hitting other cars, and pass slower moving traffic all by using localization, sensor fusion, and map data. For this purpose, a simulator provided by Udacity([the simulator could be downloaded here](https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2)) is used to visualize the implementation of the path planning. The simulator sends car telemetry information (car's position and velocity) and sensor fusion information about the rest of the cars in the highway (Ex. car id, velocity, position). It expects a set of points spaced in time at 0.02 seconds representing the car's trajectory. The communication between the simulator and the path planner is done using [WebSocket](https://en.wikipedia.org/wiki/WebSocket). The path planner uses the [uWebSockets](https://github.com/uNetworking/uWebSockets) WebSocket implementation to handle this communication. The reference repository from Udacity can be found [here](https://github.com/udacity/CarND-Path-Planning-Project). The project rubric can be found [here](https://review.udacity.com/#!/rubrics/1971/view)
+In this project, the goal is to design a path planner that is able to create smooth, safe paths for a self driving car to follow along a 3 lane highway with traffic. A successful path planner will be able to keep inside its lane, avoid hitting other cars, and pass slower moving traffic all by using localization, sensor fusion, and map data. For this purpose, a [simulator](https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2) from Udacity is used to visualize the implementation of the path planning. The simulator sends car telemetry information (car's position and velocity) and sensor fusion information about the rest of the cars in the highway (Ex. car id, velocity, position). It expects a set of points spaced in time at 0.02 seconds representing the car's trajectory. The communication between the simulator and the path planner is done using [WebSocket](https://en.wikipedia.org/wiki/WebSocket). The path planner uses the [uWebSockets](https://github.com/uNetworking/uWebSockets) WebSocket implementation to handle this communication. The reference repository from Udacity can be found [here](https://github.com/udacity/CarND-Path-Planning-Project). The project rubric can be found [here](https://review.udacity.com/#!/rubrics/1971/view)
 
 # Prerequisites
 
@@ -28,7 +28,7 @@ Now the path planner is running and listening on port 4567 for messages from the
 The simulator can the be opened and on pressing the select button, the highway and the ego vehicle appear.
 As the code runs, the vehicle moves on the highway.
 
-# [Rubic](https://review.udacity.com/#!/rubrics/1020/view) points
+# [Rubric](https://review.udacity.com/#!/rubrics/1020/view) points
 
 ## Compilation
 
